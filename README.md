@@ -6,8 +6,8 @@ This Flask-based web application automates the process of checking in students w
 - [How It Works](#how-it-works)
 - [Why It Was Created](#why-it-was-created)
 - [Features](#features)
-- [Installation & Setup (local)](#instructions--setup-local)
-- [Installation & Setup (hosted)](#instructions--setup-hosted)
+- [Installation & Setup (local)](#installation--setup-local)
+- [Installation & Setup (hosted)](#installation--setup-hosted)
 - [Maintaining for Future Years](#maintaining-for-future-years)
 
 ## How It Works
@@ -78,13 +78,13 @@ The program was designed with simplicity in mind, making it intuitive for studen
 ## Maintaining for Future Years
 For this program to succeed in the future, the list of students with a first-period free must be updated every new school year. Other settings, such as the school year start date, will also need to be changed. Most settings are located in the `settings.json` file of the root directory. Below are the instructions that should be followed at the start of every new school year. 
 
-1. Clone the repository following the steps in [Installation & Setup (local)](#instructions--setup-local)
+1. Clone the repository following the steps in [Installation & Setup (local)](#installation--setup-local)
 2. Adjust year-specific settings in `settings.json`
 3. Email Ms. Skidmore to obtain a PDF of students and their free periods
 4. Copy PDF data into a Google or text document (ensure formatting transfers properly)
 5. Save data as a text document named `student.txt` in `data` folder
 6. Run `create_student_csv.py` and ensure that `student_data.csv` is created
-7. Log in to PythonAnywhere following [Installation & Setup (hosted)](#instructions--setup-hosted)
+7. Log in to PythonAnywhere following [Installation & Setup (hosted)](#installation--setup-hosted)
 8. Navigate to `files` tab and replace all files from your computer
 9. Navigate to `web` tab and reload the website
 
