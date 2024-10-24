@@ -48,8 +48,8 @@ The program was designed with simplicity in mind, making it intuitive for studen
 ### Setup Instructions:
 1. Clone the repository:
    ```bash
-   $ git clone https://github.com/yourusername/student-checkin-automation.git
-   $ cd student-checkin-automation
+   $ git clone https://github.com/Shynee1/Student-Sign-In-Automation-System.git
+   $ cd Student-Sign-In-Automation
    ```
 2. Install dependencies:
    ```bash
