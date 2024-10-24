@@ -7,7 +7,7 @@ This Flask-based web application automates the process of checking in students w
 - [Why It Was Created](#why-it-was-created)
 - [Features](#features)
 - [Installation & Setup (local)](#installation-&-setup-(local))
-- [Installation $ Setup (hosted)](#installation-&-setup-(hosted))
+- [Installation & Setup (hosted)](#installation-&-setup-(hosted))
 - [Maintaining for Future Years](#maintaining-for-future-years)
 
 ## How It Works
@@ -17,7 +17,7 @@ This application allows students with free first periods to check themselves in 
 1. **Check-In Window**: Students can check in between the time school starts and 9:30 AM on weekdays (10:00 AM on Wednesdays).
 2. **Automatic Reminders**: 15 minutes before the check-in window closes, the system sends reminder emails to students who haven’t checked in yet.
 3. **Reporting**: Once the window closes, the system generates a list of students who have not signed in and automatically emails this list to the administration and the grade deans.
-4. **Check-Outs**: Seniors who leave campus throughout the day and check-out and check back in before 3:15 PM.
+4. **Check-Outs**: Seniors who leave campus throughout the day can check-out and check back in before 3:15 PM.
 5. **Logging**: All student check-ins and reports are logged and emailed for administrative review.
 The UI is designed to be simple and efficient, and the app is optimized for use on an iPad stationed at a central location, allowing students to sign in easily.
 
