@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Closed</title>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Form Closed</h1>
+    <p>We're sorry, but the form is currently closed because first period has ended.</p>
+    <p>Press the button below if you believe the form should be open.</p>
+    <button class="btn" onclick="location.reload()">Check Time</button>
+  </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    max-width: 800px;
+    padding: 50px 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    background-color: #fff;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #006699;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #006699;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #005580;
+  }
+
+  /* Additional styles for onclick effects */
+  .btn:active {
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 102, 153, 0.4);
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 90%;
+    }
+  }
+
+  body {
+      background: -webkit-linear-gradient(linear, left top, right bottom, color-stop(50%, Salmon), color-stop(50%, Khaki));
+      background: -webkit-linear-gradient(top left, Salmon 50%, Khaki 50%);
+      background: -o-linear-gradient(top left, Salmon 50%, Khaki 50%);
+      background: linear-gradient(to bottom right, Salmon 50%, Khaki 50%);
+  }
+</style>
+
+<script>
+  setInterval(function () {
+        var date = new Date();
+        
+        if (date.getHours() === 11 && date.getMinutes() === 0) {
+            location.reload()
+        }
+    }, 60000); // Repeat every 60000 milliseconds (1 minute)
+</script>
