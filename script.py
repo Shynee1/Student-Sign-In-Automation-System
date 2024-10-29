@@ -4,12 +4,17 @@ import json
 from send_sign_in import send_not_signed_in_students, send_reminder_students
 from settings_handler import get_setting
 from send_sign_out import send_checked_out_students
+from school_schedule import _open_day, TIMEZONE
 import time
 from pathlib import Path
 
 def main():
-    day_of_week = time.strftime("%A")
+    timestamp = datetime.now(TIMEZONE)
+    day_of_week = timestamp.strftime("%A")
     print(f"Closing Script Called On '{day_of_week}'")
+
+    if (not _open_day(timestamp)):
+        return
     
     # called at 9:16
     if day_of_week == "Wednesday":
@@ -25,25 +30,12 @@ def handle_wednesday():
     # 15 minutes (10:01)
     time.sleep(900)
     send_not_signed_in_email()
-    # 5.25 hours (3:16)
-    time.sleep(18900)
-    send_closing_email()
 
 def handle_normal_day():
     send_reminder_email()
     # 15 minutes (9:31)
     time.sleep(900)
     send_not_signed_in_email()
-    # 5.5 hours (3:16)
-    time.sleep(20700)
-    send_closing_email()
-
-def send_closing_email():
-    filename = get_log_filename()
-    with open(filename, "r") as file:
-        data = json.loads(file.read())
-        send_checked_out_students(data)
-    print("Closing email sent")
 
 def send_reminder_email():
     filename = get_log_filename()
