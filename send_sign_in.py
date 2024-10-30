@@ -7,15 +7,16 @@ from settings_handler import get_setting
 
 def send_reminder_students(info):
     unregistered_names = [name for name in info if info[name]["signed_in"] == False]
-    sendStudents(info, unregistered_names, True)
+    #sendStudents(info, unregistered_names, True)
+    print(unregistered_names)
 
 
 # given a list of students, sends that list to a specified email address.
 def send_not_signed_in_students(info):
     unregistered_names = [name for name in info if info[name]["signed_in"] == False]
     sendAll(info,unregistered_names)
-    sendGrades(info,unregistered_names)
-    sendStudents(info,unregistered_names, False)
+    #sendGrades(info,unregistered_names)
+    #sendStudents(info,unregistered_names, False)
 
 def sendAll(students,unregisteredNames):
 

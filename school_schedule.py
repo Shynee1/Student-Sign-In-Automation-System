@@ -32,18 +32,8 @@ REGISTRATION_WEDNESDAY_CLOSE_TIME = get_setting_as_date("registration-close-wedn
 SCHOOL_CLOSE_TIME = get_setting_as_date("school-close", TIME_FORMAT, TIMEZONE).time()
 
 LOGS_PATH = Path(__file__).parent.absolute() / get_setting("logs-directory-path")
-
-# Free version of python anywhere only allows one scheduled task 
-def check_for_closing_email():
-    timestamp = datetime.now(TIMEZONE)
-    if timestamp.hour == SCHOOL_CLOSE_TIME.hour and timestamp.minute == SCHOOL_CLOSE_TIME.minute:
-        filename = datetime.now().strftime("%Y-%m-%d.json")
-        with open(filename, "r") as file:
-            data = json.loads(file.read())
-            send_checked_out_students(data)
         
 def registration_open():
-    check_for_closing_email()
     # Check whether registration is open at a given datetime.
     timestamp=datetime.now(TIMEZONE)
     print(f"Checking registration at {timestamp}.")
@@ -62,7 +52,6 @@ def registration_open():
     return (REGISTRATION_OPEN_TIME <= timestamp.time()) and (timestamp.time() <= REGISTRATION_CLOSE_TIME)
 
 def sign_out_open():
-    check_for_closing_email()
     timestamp=datetime.now(TIMEZONE)
     _validate_datetime(timestamp)
 

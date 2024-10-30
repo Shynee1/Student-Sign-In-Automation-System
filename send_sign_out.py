@@ -18,6 +18,8 @@ def send_checked_out_students(info):
     for name in checked_out_names:
         content += name + ", " + str(info[name]["checked_in"]) + "\n"
 
+    print(content)
+    '''
     month = time.strftime("%B")
     day = str(int(time.strftime("%d")))
     dayOfWeek = time.strftime("%A")
@@ -29,8 +31,11 @@ def send_checked_out_students(info):
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
+    print(content)
+
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(sender_email, password)
         server.send_message(msg, from_addr=sender_email,
                             to_addrs=receiver_email)
+    '''

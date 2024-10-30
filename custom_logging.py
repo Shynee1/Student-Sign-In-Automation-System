@@ -3,6 +3,7 @@ import json
 import csv
 from school_schedule import free_period, TIMEZONE, DATE_FORMAT
 from settings_handler import get_setting, get_setting_as_date
+from time_manager import start_email_thread
 from datetime import timezone
 from pathlib import Path
 
@@ -32,6 +33,7 @@ def _read_or_initialize_student_file(date):
         print("creating daily file")
         students = get_students(free_period(), date)
         _write_student_file(students, date)
+        start_email_thread()
 
     with open(_filename(date), "r") as file:
         return json.load(file)

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from sign_in import sign_in_student, not_signed_in_names
 from check_out import not_checked_out_names, check_out_student
 from check_in import checked_out_names, check_in_student
-from school_schedule import registration_open, sign_out_open, check_for_closing_email
+from school_schedule import registration_open, sign_out_open
 
 app = Flask(__name__, static_url_path='', static_folder='static',template_folder='Templates')
 
@@ -42,7 +42,6 @@ def check_out():
         check_out_student(student)
         return current_page()
     elif request.method == "GET" and sign_out_open():
-        check_for_closing_email()
         return render_template("check-out.html",names=not_checked_out_names())
     # on post request go back to the sign out homescreen, or if it is now closed go to the closed screen
     else:

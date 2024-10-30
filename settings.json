@@ -30,6 +30,7 @@
         "2025-05-26"
     ],
     "registration-open": "6:59",
+    "reminder-email-offset": "15",
     "registration-close": "9:31",
     "registration-close-wednesday": "10:01",
     "school-close": "15:16"
