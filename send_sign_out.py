@@ -3,8 +3,8 @@ import ssl
 from email.message import EmailMessage
 import time
 from settings_handler import get_setting
-# given a list of students, sends that list to a specified email address.
 
+# given a list of students, sends that list to a specified email address.
 def send_checked_out_students(info):
     checked_out_names = [name for name in info if info[name]["checked_out"] == True]
 
@@ -17,9 +17,7 @@ def send_checked_out_students(info):
     content = 'Name of checked out student, Checked back in \n'
     for name in checked_out_names:
         content += name + ", " + str(info[name]["checked_in"]) + "\n"
-
-    print(content)
-    '''
+    
     month = time.strftime("%B")
     day = str(int(time.strftime("%d")))
     dayOfWeek = time.strftime("%A")
@@ -38,4 +36,3 @@ def send_checked_out_students(info):
         server.login(sender_email, password)
         server.send_message(msg, from_addr=sender_email,
                             to_addrs=receiver_email)
-    '''

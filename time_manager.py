@@ -1,5 +1,5 @@
 import json
-from threading import Thread
+from multiprocessing import Process
 from datetime import datetime, timedelta
 from datetime import date as date_function
 from send_sign_in import send_not_signed_in_students, send_reminder_students
@@ -12,8 +12,9 @@ from pathlib import Path
 # Starts when log file is created for each day
 # Ends at the end of the school day
 def start_email_thread():
-    email_thread = Thread(target=email_scheduler)
+    email_thread = Process(target=email_scheduler)
     email_thread.start()
+    print("Email scheduling task closed")
 
 # Runs every "frame" and checks whether it should be sending an email
 def email_scheduler():
@@ -86,3 +87,6 @@ def get_log_filename():
 
 def times_equal(timeA, timeB):
     return (timeA.hour == timeB.hour) and (timeA.minute == timeB.minute)
+
+if __name__ == "__main__":
+    send_not_signed_in_email()
