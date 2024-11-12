@@ -79,14 +79,14 @@ The program was designed with simplicity in mind, making it intuitive for studen
 For this program to succeed in the future, the list of students with a first-period free must be updated every new school year. Other settings, such as the school year start date, will also need to be changed. Most settings are located in the `settings.json` file of the root directory. Below are the instructions that should be followed at the start of every new school year. 
 
 1. Clone the repository following the steps in [Installation & Setup (local)](#installation--setup-local)
-2. Adjust year-specific settings in `settings.json`
-3. Email Ms. Skidmore to obtain a PDF of students and their free periods
-4. Copy PDF data into a Google or text document (ensure formatting transfers properly)
-5. Save data as a text document named `student.txt` in `data` folder
-6. Run `create_student_csv.py` and ensure that `student_data.csv` is created
-7. Log in to PythonAnywhere following [Installation & Setup (hosted)](#installation--setup-hosted)
-8. Navigate to `files` tab and replace all files from your computer
-9. Navigate to `web` tab and reload the website
+2. Adjust year-specific settings in `settings.json` (use the academic calendar for holidays)
+4. Email Ms. Skidmore to obtain a PDF of students and their free periods
+5. Copy PDF data into a Google or text document (ensure formatting transfers properly)
+6. Save data as a text document named `student.txt` in `data` folder
+7. Run `create_student_csv.py` and ensure that `student_data.csv` is created
+8. Log in to PythonAnywhere following [Installation & Setup (hosted)](#installation--setup-hosted)
+9. Navigate to `files` tab and replace all files from your computer
+10. Navigate to `web` tab and reload the website
 
 Remember to periodically extend expiry of PythonAnywhere task and website!
 
