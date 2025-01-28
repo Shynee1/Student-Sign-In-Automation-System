@@ -80,7 +80,7 @@ def free_period():
     free_period = FREE_PATTERN[school_days % 7]
 
     print(f'Free Period: {free_period}')
-    return free_period
+    return "A"
 
 
 def _validate_datetime(timestamp):

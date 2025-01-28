@@ -61,7 +61,11 @@ def get_students(period, date):
         grade = row[GRADE_INDEX]
         name = row[NAME_INDEX]
         email = row[EMAIL_INDEX]
-        signed_in = True
+
+        if name in students:
+            signed_in = students[name]["signed_in"]
+        else:   
+            signed_in = True
 
         if free == period:
             signed_in = False
