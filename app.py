@@ -9,9 +9,9 @@ app = Flask(__name__, static_url_path='', static_folder='static',template_folder
 # if the time is between 7:00 and 9:30 return sign-in page, if time is between 9:30 and 3:15 return campus sign-out page
 def current_page():
     if registration_open():
-        return render_template("sign-in.html", names=not_signed_in_names())
+        return render_template("sign-in.html", names=not_signed_in_names(), status="Signed In!")
     elif sign_out_open():
-        return render_template("sign-out.html")
+        return render_template("sign-out.html", status="Signed Out!")
     else:
         return render_template("closed.html")
 
@@ -42,7 +42,7 @@ def check_out():
         check_out_student(student)
         return current_page()
     elif request.method == "GET" and sign_out_open():
-        return render_template("check-out.html",names=not_checked_out_names())
+        return render_template("check-out.html",names=not_checked_out_names(), status="Checked Out!")
     # on post request go back to the sign out homescreen, or if it is now closed go to the closed screen
     else:
         return current_page()
@@ -55,10 +55,10 @@ def check_in():
         check_in_student(student)
         return current_page()
     elif request.method == "GET" and sign_out_open():
-        return render_template("check-in.html",names=checked_out_names())
+        return render_template("check-in.html",names=checked_out_names(), status="Checked In!")
         # on post request go back to the sign out homescreen, or if it is now closed go to the closed screen
     else:
         return current_page()
 
 if __name__ == '__main__':
-    app.run(debug=False, port=8000)
+    app.run(debug=True, port=8000)

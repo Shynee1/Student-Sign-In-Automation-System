@@ -19,6 +19,9 @@ def _filename(date):
 
 
 def _write_student_file(students, date):
+    log_folder = Path(__file__).parent.absolute() / get_setting("logs-directory-path")
+    os.makedirs(log_folder, exist_ok = True)
+ 
     """Write student information to "logs/YYYY-MM-DD.json", overwriting any existing contents."""
     with open(_filename(date), "w+") as file:
         json.dump(students, file)

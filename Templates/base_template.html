@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Sign-In</title>
+
+  <!-- Bootstrap & Selectize -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+
+  <style>
+    :root {
+      --maroon: #7b1113;
+      --gold: #d4af37;
+      --light: #fff8f0;
+      --gray: #f0f0f0;
+    }
+
+    body {
+      background-color: var(--maroon);
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      color: var(--light);
+      font-size: 5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .card-container {
+      background-color: var(--light);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      max-width: 800px;
+      width: 100%;
+      border-top: 10px solid var(--gold);
+      margin: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      color: var(--maroon);
+      font-weight: 700;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .selectize-input {
+      height: 50px;
+      min-width: 700px;
+      font-size: 18px;
+      border-color: grey;
+      border-width: 2px;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .selectize-input input {
+      text-align: center !important;
+      font-family: 'Segoe UI', sans-serif !important;
+      font-size: 18px !important;
+    }
+
+    .selectize-input .item {
+      text-align: center !important;
+      font-family: 'Segoe UI', sans-serif !important;
+      font-size: 18px !important;
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .selectize-dropdown {
+      text-align: center !important;
+      font-family: "Segoe UI", sans-serif !important;
+      font-size: 18px !important;
+    }
+
+    .selectize-dropdown .option {
+      text-align: center !important;
+      font-family: "Segoe UI", sans-serif !important;
+      font-size: 18px !important;
+    }
+
+
+    .btn-checkin {
+      margin-top: 1rem;
+      background-color: var(--gold);
+      color: var(--maroon);
+      border: none;
+      font-weight: 600;
+      height: 45px;
+      width: 100%;
+    }
+
+    .btn-checkin:hover {
+      background-color: #c19e2b;
+    }
+
+    .logo {
+      display: block;
+      margin: 2rem auto 1rem;
+      max-width: 120px;
+    }
+
+    .footer-note {
+      font-size: 1.25rem;
+      text-align: center;
+      color: #555;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+    }
+    
+    .button-container > a {
+        width: 12rem;
+        height: 4rem;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 0.9rem;
+    }
+
+    @media (max-width: 576px) {
+      .title {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <h1>{% block title %}{% endblock %}</h1>
+
+    <main class="card-container">
+        {% block card %}{% endblock %}
+        <img class="logo" src="https://instructure-uploads.s3.amazonaws.com/account_23930000000000001/attachments/63765/THS-Seal-2c.png?AWSAccessKeyId=AKIAJFNFXH2V2O7RPCAA&Expires=1938411768&Signature=ewaYhupFt3fbG4TPx5CTf%2BhmY7A%3D&response-cache-control=Cache-Control%3Amax-age%3D473364000.0%2C%20public&response-expires=473364000.0" alt="School Logo" />
+        {% block footer %}{% endblock %}
+    </main>
+
+    {% block back %}{% endblock %}
+
+    <!-- Confirmation Popup -->
+    <script>
+        document.querySelector('#myForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const select = document.querySelector('#student');
+        const student = select.options[select.selectedIndex].value;
+
+        if (!student) return;
+
+        Swal.fire({
+            title: `Confirm you are ${student}`,
+            text: "In accordance with the Haverford School Honor Code.",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("You're {{status}}!", "", "success");
+                setTimeout(() => {
+                    document.getElementById("myForm").submit();
+                }, 1000);
+            }
+            });
+        });
+    </script>
+
+    <!-- Initialize Selectize -->
+    <script>
+        $(document).ready(function () {
+            $('#student').selectize({ sortField: 'text' });
+        });
+    </script>
+</body>
+
+</html>
