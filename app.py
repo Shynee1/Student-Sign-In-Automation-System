@@ -42,7 +42,7 @@ def check_out():
         check_out_student(student)
         return current_page()
     elif request.method == "GET" and sign_out_open():
-        return render_template("check-out.html",names=not_checked_out_names(), status="Checked Out!")
+        return render_template("check-out.html", names=not_checked_out_names(), status="Checked Out!")
     # on post request go back to the sign out homescreen, or if it is now closed go to the closed screen
     else:
         return current_page()
