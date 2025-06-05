@@ -2,6 +2,8 @@
 
 This Flask-based web application automates the process of checking in students who have their first-period free. It replaces the manual task of teachers taking attendance, ensuring a more efficient, streamlined, and reliable method of tracking student arrivals. The system sends automatic reminders, generates reports, and emails the administration for students who do not check in on time. All code is hosted on PythonAnywhere.
 
+![Sign-in UI](https://i.postimg.cc/jqHjQhSc/Sign-In-UI.png)
+
 ## Table of Contents
 - [How It Works](#how-it-works)
 - [Why It Was Created](#why-it-was-created)
